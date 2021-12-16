@@ -21,11 +21,4 @@ class UserWordsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let fullSentence = segue.destination as! ViewController
-        fullSentence.adjectiveWord = tfAdjective.text
-        fullSentence.verb1Word = tfVerb1.text
-        fullSentence.verb2Word = tfVerb2.text
-        fullSentence.nounWord = tfNoun.text
-    }*/
 }
