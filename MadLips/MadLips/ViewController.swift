@@ -27,19 +27,19 @@ class ViewController: UIViewController {
             let userWord = unwindSegue.source as! UserWordsViewController
             if let adj = userWord.tfAdjective.text {
                 adjectiveWord = adj
-                userWords.append(adj)
+                userWords.append(adjectiveWord)
             }
             if let v1 = userWord.tfVerb1.text {
                 verb1Word = v1
-                userWords.append(v1)
+                userWords.append(verb1Word)
             }
             if let v2 = userWord.tfVerb2.text {
                 verb2Word = v2
-                userWords.append(v2)
+                userWords.append(verb2Word)
             }
             if let n = userWord.tfNoun.text {
                 nounWord = n
-                userWords.append(n)
+                userWords.append(nounWord)
             }
             lbSentence.text = "We are having a perfectly \(userWords[0]) time now. Later, we will \(userWords[1]) and \(userWords[2]) in the \(userWords[3])."
         }
