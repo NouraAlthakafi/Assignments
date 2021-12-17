@@ -12,7 +12,7 @@ class AddToListTableViewController: UITableViewController {
     
     weak var delegate: DelegateSaveBtn?
     var editBucketItem: String?
-    var indexPath: NSIndexPath?
+    var indexPath: IndexPath?
     
     @IBAction func btnCancelAction(_ sender: UIBarButtonItem) {
         delegate?.canceling(by: self)

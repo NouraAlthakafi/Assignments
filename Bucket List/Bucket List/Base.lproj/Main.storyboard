@@ -37,7 +37,7 @@
                     <navigationItem key="navigationItem" title="Bucket List" id="ZHC-fR-IEE">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="g4J-SG-5To">
                             <connections>
-                                <segue destination="l1w-OY-iXp" kind="presentation" identifier="EditBucketItemSegue" id="9rg-n5-BVT"/>
+                                <segue destination="l1w-OY-iXp" kind="presentation" identifier="EditBucketItemSegue" id="LEl-cy-ocS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -148,7 +148,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eSV-MR-haA"/>
+        <segue reference="LEl-cy-ocS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
