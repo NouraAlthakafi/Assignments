@@ -25,8 +25,11 @@ class TableViewController: UITableViewController {
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTask", for: indexPath) as! TableViewCell
+        cell.lbTitle.text = userTasks[indexPath.row].taskTitle
+        cell.lbDescription.text = userTasks[indexPath.row].taskDescription
+        
         let task = userTasks[indexPath.row]
         // The date of the task:
         let date = DateFormatter()
@@ -34,9 +37,6 @@ class TableViewController: UITableViewController {
         date.dateStyle = .short
         let dateTask = date.string(from: task.taskDate!)
         cell.lbDate.text = dateTask
-        // The task:
-        cell.lbTitle.text = task.taskTitle
-        cell.lbDescription.text = task.taskDescription
         // The accomplished task:
         if task.taskDone == true {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
