@@ -6,40 +6,35 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var tfTaskTitle: UITextField!
     @IBOutlet weak var tvTaskDescription: UITextView!
     @IBOutlet weak var dpTaskTime: UIDatePicker!
     
-    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let managedObjSave = (UIApplication.shared.delegate as! AppDelegate).saveContext
+    lazy var context = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
     
     @IBAction func btnAddAction(_ sender: UIButton) {
-        let task = TodoListItem(context: managedObjectContext)
-        task.taskTitle = tfTaskTitle.text
+        let task = TodoListItem(context: context)
+        task.taskTitle = tfTaskTitle.text ?? "Task Title"
         task.taskDescription = tvTaskDescription.text
         task.taskDate = dpTaskTime.date
+        
         // Save user task
-        managedObjSave()
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
         dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

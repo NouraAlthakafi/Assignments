@@ -9,15 +9,21 @@ import UIKit
 import CoreData
 
 class TableViewController: UITableViewController {
-    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let managedObjSave = (UIApplication.shared.delegate as! AppDelegate).saveContext
+    lazy var context = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
     
     var userTasks = [TodoListItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         fetchaAllTasks()
-        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +33,9 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTask", for: indexPath) as! TableViewCell
+        cell.lbTitle.text = userTasks[indexPath.row].taskTitle
+        cell.lbDescription.text = userTasks[indexPath.row].taskDescription
+        
         let task = userTasks[indexPath.row]
         // The date of the task:
         let date = DateFormatter()
@@ -34,16 +43,12 @@ class TableViewController: UITableViewController {
         date.dateStyle = .short
         let dateTask = date.string(from: task.taskDate!)
         cell.lbDate.text = dateTask
-        // The task:
-        cell.lbTitle.text = task.taskTitle
-        cell.lbDescription.text = task.taskDescription
         // The accomplished task:
         if task.taskDone == true {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
         return cell
     }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let task = userTasks[indexPath.row]
             task.taskDone = !task.taskDone
@@ -52,7 +57,13 @@ class TableViewController: UITableViewController {
             } else {
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
             }
-        managedObjSave()
+        do {
+            try context.save()
+        } catch {
+            print("\(error)")
+            
+        }
+        //managedObjSave()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -61,10 +72,14 @@ class TableViewController: UITableViewController {
     }
     
     func fetchaAllTasks() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TodoListItem")
+        let request = NSFetchRequest<TodoListItem>(entityName: "TodoListItem")
         do {
-            let result = try managedObjectContext.fetch(request)
-            userTasks = result as! [TodoListItem]
+            userTasks = try context.fetch(request)
+            //userTasks = result
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            //tableView.reloadData()
         } catch {
             print("\(error)")
         }
@@ -72,9 +87,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             let task = userTasks[indexPath.row]
-            managedObjectContext.delete(task)
-            
-            managedObjSave()
+            context.delete(task)
             
             userTasks.remove(at: indexPath.row)
             tableView.reloadData()

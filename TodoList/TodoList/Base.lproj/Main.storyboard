@@ -27,8 +27,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-H1-QDJ">
-                                            <rect key="frame" x="308" y="11" width="86" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-H1-QDJ">
+                                            <rect key="frame" x="270" y="11" width="124" height="21"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
@@ -41,7 +41,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygI-xf-dU0">
-                                            <rect key="frame" x="20" y="11" width="57" height="29"/>
+                                            <rect key="frame" x="20" y="11" width="207" height="29"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
@@ -69,10 +69,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="RkT-sd-xOB" firstAttribute="top" secondItem="ygI-xf-dU0" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ng-K5-bSb"/>
+                                        <constraint firstItem="BFc-H1-QDJ" firstAttribute="width" secondItem="0Vi-6k-uzQ" secondAttribute="width" multiplier="0.3" id="8Yv-BY-je3"/>
                                         <constraint firstItem="BFc-H1-QDJ" firstAttribute="trailing" secondItem="0Vi-6k-uzQ" secondAttribute="trailingMargin" id="AtO-xb-dqy"/>
                                         <constraint firstItem="ygI-xf-dU0" firstAttribute="leading" secondItem="0Vi-6k-uzQ" secondAttribute="leadingMargin" id="BC7-K5-eb4"/>
                                         <constraint firstItem="BFc-H1-QDJ" firstAttribute="top" secondItem="0Vi-6k-uzQ" secondAttribute="topMargin" id="FGW-cS-2tK"/>
                                         <constraint firstItem="RkT-sd-xOB" firstAttribute="leading" secondItem="0Vi-6k-uzQ" secondAttribute="leading" constant="16" id="dH0-66-7SM"/>
+                                        <constraint firstItem="ygI-xf-dU0" firstAttribute="width" secondItem="0Vi-6k-uzQ" secondAttribute="width" multiplier="0.5" id="lYN-eN-vVd"/>
                                         <constraint firstItem="ygI-xf-dU0" firstAttribute="top" secondItem="0Vi-6k-uzQ" secondAttribute="topMargin" id="sVb-qQ-UWZ"/>
                                         <constraint firstAttribute="trailing" secondItem="RkT-sd-xOB" secondAttribute="trailing" constant="16" id="xQJ-Wq-Hyg"/>
                                     </constraints>
@@ -187,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ctj-7J-cgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2031.8840579710147" y="124.55357142857142"/>
+            <point key="canvasLocation" x="2072" y="125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xO8-i7-Jlc">
