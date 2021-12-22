@@ -19,7 +19,7 @@ class AddAssignmentVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     // MARK: - Actions
     @IBAction func btnAddAssignment(_ sender: UIButton) {
         guard let assignmentName = tfAssignmentName.text else { return }
-        let selectedPickerViewIndex = pvTimer.selectedRow(inComponent: 1)
+        let selectedPickerViewIndex = pvTimer.selectedRow(inComponent: 0)
         let timerGoal = timerGoals[selectedPickerViewIndex]
         let timeInterval = calculateTimerValue(pickerViewTarget: timerGoal)
         
@@ -42,6 +42,7 @@ class AddAssignmentVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return timerGoals.count
     }
     

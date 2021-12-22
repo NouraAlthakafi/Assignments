@@ -47,6 +47,11 @@ class AssignmentListVC: UIViewController, UITableViewDataSource, UITableViewDele
         self.navigationController?.pushViewController(assignmentTimerVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        trackerArray.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+    
     //MARK: - AddTrackerDelegate Protocol
     func addTrackerToList(tracker: Tracker) {
         trackerArray.append(tracker)
