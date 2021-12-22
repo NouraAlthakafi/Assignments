@@ -22,6 +22,15 @@ class PeopleTblVC: UITableViewController {
         tableView.reloadData()
     }
     
+    //MARK: - ViewWillAppear - TabBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.barTintColor = .blue
+        self.tabBarController?.tabBar.backgroundColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .blue
+        self.tabBarController?.tabBar.tintColor = .red
+    }
+    
     //MARK: - TableView Functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayPeopleAPI.count
@@ -77,12 +86,15 @@ class PeopleTblVC: UITableViewController {
     func parsePeopleAPI(dictPeople: [String: Any]) {
         guard let name = dictPeople["name"] as? String else { return }
         let apiPeople = APIPeopleStruct.init(name: name)
-        arrayPeopleAPI.append(apiPeople)
+        DispatchQueue.main.async {
+            self.arrayPeopleAPI.append(apiPeople)
+            self.tableView.reloadData()
+        }
         print(apiPeople)
     }
 }
 
 //MARK: - Struct
-struct APIPeopleStruct {
+struct APIPeopleStruct: Codable {
     let name: String
 }
