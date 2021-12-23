@@ -15,6 +15,8 @@
 		845DCD1B2773479B00CC3924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845DCD192773479B00CC3924 /* LaunchScreen.storyboard */; };
 		845DCD26277393BC00CC3924 /* FilmsTblVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD25277393BC00CC3924 /* FilmsTblVC.swift */; };
 		845DCD282774A28E00CC3924 /* APImanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD272774A28E00CC3924 /* APImanager.swift */; };
+		845DCD2B27751B7200CC3924 /* PeopleCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD2A27751B7200CC3924 /* PeopleCustomCell.swift */; };
+		845DCD2D27751D3C00CC3924 /* FilmsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD2C27751D3C00CC3924 /* FilmsCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		845DCD1C2773479B00CC3924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845DCD25277393BC00CC3924 /* FilmsTblVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTblVC.swift; sourceTree = "<group>"; };
 		845DCD272774A28E00CC3924 /* APImanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APImanager.swift; sourceTree = "<group>"; };
+		845DCD2A27751B7200CC3924 /* PeopleCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCustomCell.swift; sourceTree = "<group>"; };
+		845DCD2C27751D3C00CC3924 /* FilmsCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 				845DCD272774A28E00CC3924 /* APImanager.swift */,
 				845DCD0E2773479900CC3924 /* AppDelegate.swift */,
 				845DCD102773479900CC3924 /* SceneDelegate.swift */,
+				845DCD2927751AB900CC3924 /* CustomCells */,
 				845DCD242773934C00CC3924 /* Controllers */,
 				845DCD142773479900CC3924 /* Main.storyboard */,
 				845DCD172773479B00CC3924 /* Assets.xcassets */,
@@ -79,6 +84,15 @@
 				845DCD25277393BC00CC3924 /* FilmsTblVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		845DCD2927751AB900CC3924 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				845DCD2A27751B7200CC3924 /* PeopleCustomCell.swift */,
+				845DCD2C27751D3C00CC3924 /* FilmsCustomCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				845DCD132773479900CC3924 /* PeopleTblVC.swift in Sources */,
+				845DCD2B27751B7200CC3924 /* PeopleCustomCell.swift in Sources */,
 				845DCD282774A28E00CC3924 /* APImanager.swift in Sources */,
 				845DCD26277393BC00CC3924 /* FilmsTblVC.swift in Sources */,
+				845DCD2D27751D3C00CC3924 /* FilmsCustomCell.swift in Sources */,
 				845DCD0F2773479900CC3924 /* AppDelegate.swift in Sources */,
 				845DCD112773479900CC3924 /* SceneDelegate.swift in Sources */,
 			);

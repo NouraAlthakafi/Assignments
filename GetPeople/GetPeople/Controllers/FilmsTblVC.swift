@@ -9,10 +9,12 @@ import UIKit
 
 class FilmsTblVC: UITableViewController {
     //MARK: - Variables
+    let filmsAPI = "https://swapi.dev/api/films/"
     let cellID = "cellTitle"
     var arrayFilmsAPI: APIResultFilms?
-    var BLUE = UIColor.blue
     var BLACK = UIColor.black
+    var BLUE = UIColor.blue
+    var WHITE = UIColor.white
     var YELLOW = UIColor.yellow
     
     override func viewDidLoad() {
@@ -24,10 +26,10 @@ class FilmsTblVC: UITableViewController {
     //MARK: - ViewWillAppear - TabBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.tabBarController?.tabBar.barTintColor = .black
-        self.tabBarController?.tabBar.backgroundColor = .white
-        self.tabBarController?.tabBar.unselectedItemTintColor = .black
-        self.tabBarController?.tabBar.tintColor = .blue
+        self.tabBarController?.tabBar.barTintColor = BLACK
+        self.tabBarController?.tabBar.backgroundColor = .red
+        self.tabBarController?.tabBar.unselectedItemTintColor = WHITE
+        self.tabBarController?.tabBar.tintColor = YELLOW
     }
 
     // MARK: - TableView Functions
@@ -36,25 +38,29 @@ class FilmsTblVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = self.arrayFilmsAPI?.results[indexPath.row].title
-        cell.textLabel?.textColor = YELLOW
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! FilmsCustomCell
+        cell.lbTitle.text = self.arrayFilmsAPI?.results[indexPath.row].title
+        cell.lbReleaseDate.text = self.arrayFilmsAPI?.results[indexPath.row].release_date
+        cell.lbDirector.text = self.arrayFilmsAPI?.results[indexPath.row].director
+        cell.lbOpeningCrawl.text = self.arrayFilmsAPI?.results[indexPath.row].opening_crawl
+        cell.lbTitle.textColor = .red
+        cell.lbReleaseDate.textColor = .red
+        cell.lbDirector.textColor = .red
+        cell.lbOpeningCrawl.textColor = .red
         cell.backgroundColor = BLUE
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = YELLOW
-        tableView.cellForRow(at: indexPath)?.textLabel?.textColor = BLUE
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        120
     }
     
     //MARK: - Functions
     func getFilmsAPI() {
-        let filmsAPI = "https://swapi.dev/api/films/"
         APImanager.getAPIResponse(urlPath: filmsAPI) { data, error in
             if error != nil {
                 print("Error \(String(describing: error?.localizedDescription))")
@@ -90,4 +96,7 @@ struct APIResultFilms: Codable {
 
 struct APIFilmsStruct: Codable {
     let title: String
+    let release_date: String
+    let director: String
+    let opening_crawl: String
 }

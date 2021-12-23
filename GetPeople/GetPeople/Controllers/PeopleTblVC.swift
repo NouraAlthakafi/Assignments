@@ -9,10 +9,11 @@ import UIKit
 
 class PeopleTblVC: UITableViewController {
     //MARK: - Variables
-    let cellID = "cellName"
+    let peopleAPI = "https://swapi.py4e.com/api/people/"
+    var cellID = "cellName"
     var arrayPeopleAPI: APIResultPeople?
-    var RED = UIColor.red
     var BLACK = UIColor.black
+    var RED = UIColor.red
     var WHITE = UIColor.white
     
     override func viewDidLoad() {
@@ -25,8 +26,8 @@ class PeopleTblVC: UITableViewController {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.barTintColor = .blue
         self.tabBarController?.tabBar.backgroundColor = .yellow
-        self.tabBarController?.tabBar.unselectedItemTintColor = .blue
-        self.tabBarController?.tabBar.tintColor = .red
+        self.tabBarController?.tabBar.unselectedItemTintColor = BLACK
+        self.tabBarController?.tabBar.tintColor = RED
     }
     
     //MARK: - TableView Functions
@@ -35,25 +36,29 @@ class PeopleTblVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = self.arrayPeopleAPI?.results[indexPath.row].name
-        cell.textLabel?.textColor = WHITE
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PeopleCustomCell
+        cell.lbName.text = self.arrayPeopleAPI?.results[indexPath.row].name
+        cell.lbGenber.text = self.arrayPeopleAPI?.results[indexPath.row].gender
+        cell.lbBirthYear.text = self.arrayPeopleAPI?.results[indexPath.row].birth_year
+        cell.lbMass.text = self.arrayPeopleAPI?.results[indexPath.row].mass
+        cell.lbName.textColor = WHITE
+        cell.lbGenber.textColor = WHITE
+        cell.lbBirthYear.textColor = WHITE
+        cell.lbMass.textColor = WHITE
         cell.backgroundColor = BLACK
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = RED
-        tableView.cellForRow(at: indexPath)?.textLabel?.textColor = BLACK
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        120
     }
     
     //MARK: - Functions
     func getPeopleAPI() {
-        let peopleAPI = "https://swapi.py4e.com/api/people/"
         APImanager.getAPIResponse(urlPath: peopleAPI) { data, error in
             if error != nil {
                 print("Error \(String(describing: error?.localizedDescription))")
@@ -89,4 +94,7 @@ struct APIResultPeople: Codable {
 
 struct APIPeopleStruct: Codable {
     let name: String
+    let gender: String
+    let birth_year: String
+    let mass: String
 }
