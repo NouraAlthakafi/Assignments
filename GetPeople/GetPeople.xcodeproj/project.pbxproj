@@ -14,6 +14,7 @@
 		845DCD182773479B00CC3924 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845DCD172773479B00CC3924 /* Assets.xcassets */; };
 		845DCD1B2773479B00CC3924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845DCD192773479B00CC3924 /* LaunchScreen.storyboard */; };
 		845DCD26277393BC00CC3924 /* FilmsTblVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD25277393BC00CC3924 /* FilmsTblVC.swift */; };
+		845DCD282774A28E00CC3924 /* APImanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DCD272774A28E00CC3924 /* APImanager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		845DCD1A2773479B00CC3924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		845DCD1C2773479B00CC3924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845DCD25277393BC00CC3924 /* FilmsTblVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTblVC.swift; sourceTree = "<group>"; };
+		845DCD272774A28E00CC3924 /* APImanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APImanager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		845DCD0D2773479900CC3924 /* GetPeople */ = {
 			isa = PBXGroup;
 			children = (
+				845DCD272774A28E00CC3924 /* APImanager.swift */,
 				845DCD0E2773479900CC3924 /* AppDelegate.swift */,
 				845DCD102773479900CC3924 /* SceneDelegate.swift */,
 				845DCD242773934C00CC3924 /* Controllers */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845DCD132773479900CC3924 /* PeopleTblVC.swift in Sources */,
+				845DCD282774A28E00CC3924 /* APImanager.swift in Sources */,
 				845DCD26277393BC00CC3924 /* FilmsTblVC.swift in Sources */,
 				845DCD0F2773479900CC3924 /* AppDelegate.swift in Sources */,
 				845DCD112773479900CC3924 /* SceneDelegate.swift in Sources */,
