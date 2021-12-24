@@ -55,9 +55,9 @@ class FilmsTblVC: UITableViewController {
         tableView.cellForRow(at: indexPath)?.backgroundColor = YELLOW
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
-    }
+    }*/
     
     //MARK: - Functions
     func getFilmsAPI() {
