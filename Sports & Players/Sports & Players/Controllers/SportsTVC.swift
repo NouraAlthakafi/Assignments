@@ -74,9 +74,8 @@ class SportsTVC: UITableViewController {
         // Buttons
         // save
         let btnSaveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            let sport = SportsEntity(context: self.managedObjectContext)
-            guard let tfSport = tfSport.text else { return }
-            sport.sportName = tfSport
+            let sport = SportsEntity.self(context: self.managedObjectContext)
+            sport.sportName = tfSport.text!
             self.tableView.reloadData()
             do {
                 try self.managedObjectContext.save()

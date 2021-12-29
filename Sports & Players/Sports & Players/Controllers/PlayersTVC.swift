@@ -77,7 +77,18 @@ class PlayersTVC: UITableViewController {
         // Buttons
         // save
         let btnSaveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            // coreData to save new
+            let player = PlayersEntity.self(context: self.managedObjectContext)
+            player.playerName = tfPlayerName.text!
+            player.playerAge = Int16(tfPlayerAge.text!)
+            player.playerHeight = Double(tfPlayerHeight.text!)
+            self.tableView.reloadData()
+            do {
+                try self.managedObjectContext.save()
+                print("Success!")
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+            self.fetchAllPlayers()
         }
         
         // cancel
